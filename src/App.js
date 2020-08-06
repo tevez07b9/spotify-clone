@@ -26,6 +26,7 @@ function App() {
 			});
 
 			spotify.setAccessToken(_token);
+
 			spotify.getMe().then((user) => {
 				// console.log("🙍", user);
 
@@ -34,6 +35,16 @@ function App() {
 					type: "SET_USER",
 					payload: {
 						user,
+					},
+				});
+			});
+
+			spotify.getUserPlaylists().then((playlists) => {
+				// Store the playlist
+				dispatch({
+					type: "SET_PLAYLIST",
+					payload: {
+						playlists,
 					},
 				});
 			});
